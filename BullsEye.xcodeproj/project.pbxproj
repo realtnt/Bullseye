@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E4C8E6382AE657A300346C46 /* BullsEyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8E6372AE657A300346C46 /* BullsEyeApp.swift */; };
-		E4C8E63A2AE657A300346C46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8E6392AE657A300346C46 /* ContentView.swift */; };
+		E4C8E63A2AE657A300346C46 /* BullsEyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8E6392AE657A300346C46 /* BullsEyeView.swift */; };
 		E4C8E63C2AE657A500346C46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4C8E63B2AE657A500346C46 /* Assets.xcassets */; };
 		E4C8E63F2AE657A500346C46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4C8E63E2AE657A500346C46 /* Preview Assets.xcassets */; };
 		E4C8E6492AE657A500346C46 /* BullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8E6482AE657A500346C46 /* BullsEyeTests.swift */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		E4C8E6342AE657A300346C46 /* BullsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C8E6372AE657A300346C46 /* BullsEyeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeApp.swift; sourceTree = "<group>"; };
-		E4C8E6392AE657A300346C46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E4C8E6392AE657A300346C46 /* BullsEyeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeView.swift; sourceTree = "<group>"; };
 		E4C8E63B2AE657A500346C46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4C8E63E2AE657A500346C46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E4C8E6442AE657A500346C46 /* BullsEyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				E4C8E6372AE657A300346C46 /* BullsEyeApp.swift */,
-				E4C8E6392AE657A300346C46 /* ContentView.swift */,
+				E4C8E6392AE657A300346C46 /* BullsEyeView.swift */,
 				E4C8E63B2AE657A500346C46 /* Assets.xcassets */,
 				E4C8E63D2AE657A500346C46 /* Preview Content */,
 			);
@@ -257,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C8E63A2AE657A300346C46 /* ContentView.swift in Sources */,
+				E4C8E63A2AE657A300346C46 /* BullsEyeView.swift in Sources */,
 				E4C8E6382AE657A300346C46 /* BullsEyeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
