@@ -32,54 +32,62 @@ class BullsEyeVM {
 
 struct BullsEyeView: View {
     let bullsEyeVM = BullsEyeVM()
-    @State private var sliderValue: CGFloat = 50.0
     @State private var showingAlert = false
     @State private var gameStarted = false
+    @State private var sliderValue: CGFloat = 50.0
+    @State private var doublePoints = false
     
     var body: some View {
-        VStack {
-            Button {
-                gameStarted = true
-                bullsEyeVM.getRandomNumber()
-            } label: {
-                Text("Start Game")
-            }
-            .disabled(gameStarted)
-            .buttonStyle(StandardButton())
-            
-            Spacer()
-            let target = bullsEyeVM.randomNumber == 0 ? "-" : "\(bullsEyeVM.randomNumber)"
-            Label(target, systemImage: "target")
+        let target = bullsEyeVM.randomNumber == 0 ? "-" : "\(bullsEyeVM.randomNumber)"
+        ZStack {
+            Text("\(target)")
                 .font(.title)
                 .bold()
-                .monospaced()
-                .foregroundStyle(.red)
-            
-            Spacer()
-            
-            Slider(value: $sliderValue, in: 1...100, step: 1)
-                .frame(width: 350, height: 50)
-                .background(.red)
-                .tint(.white)
-                .clipShape(
-                    RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
-                )
-            
-            Spacer()
-            
-            Button("Check") {
-                showingAlert = true
-            }
-            .alert(bullsEyeVM.checkScore(of: Int(sliderValue)), isPresented: $showingAlert) {
-                Button("OK", role: .cancel) {
-                    gameStarted = false
-                    sliderValue = 50
+            VStack {
+                BullsEyeSlider(sliderValue: $sliderValue)
+                    .padding(.top, 150)
+                Spacer()
+                Toggle("Double Points", isOn: $doublePoints)
+                    .padding(.horizontal, 30)
+                    .font(.title2)
+                    .bold()
+                HStack(spacing: 30) {
+                    Button {
+                        gameStarted = true
+                        bullsEyeVM.getRandomNumber()
+                    } label: {
+                        Text("Start Game")
+                    }
+                    .disabled(gameStarted)
+                    .buttonStyle(StandardButton())
+                    Button("Check") {
+                        showingAlert = true
+                    }
+                    .alert(bullsEyeVM.checkScore(of: Int(sliderValue)), isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) {
+                            gameStarted = true
+                            bullsEyeVM.getRandomNumber()
+                        }
+                    }
+                    .disabled(!gameStarted)
+                    .buttonStyle(StandardButton())
                 }
+                .padding(.vertical)
             }
-            .disabled(!gameStarted)
-            .buttonStyle(StandardButton())
+            .background {
+                Image(systemName: "target")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 1000)
+                    .foregroundStyle(.red)
+                    .opacity(0.2)
+            }
         }
     }
+}
+
+#Preview {
+    BullsEyeView()
 }
 
 struct StandardButton: ButtonStyle {
@@ -91,12 +99,37 @@ struct StandardButton: ButtonStyle {
             .frame(minWidth: 150)
             .background(isEnabled ? .blue : .gray)
             .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 14, height: 5)))
             .scaleEffect(configuration.isPressed ? 0.8 : 1)
             .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }
 }
 
-#Preview {
-    BullsEyeView()
+struct BullsEyeSlider: View {
+    @Binding var sliderValue: CGFloat
+    let startValue = 1
+    let endValue = 100
+
+    var body: some View {
+        HStack {
+            Text("\(startValue)")
+                .font(.caption)
+                .frame(width: 25)
+            Slider(
+                value: $sliderValue,
+                in: CGFloat(startValue)...CGFloat(endValue),
+                step: 1)
+            .padding(5)
+            .frame(width: .infinity, height: 50)
+            .background(.red)
+            .tint(.white)
+            .clipShape(
+                RoundedRectangle(cornerSize: CGSize(width: 50, height: 50))
+            )
+            .padding(.horizontal, 1)
+            Text("\(endValue)")
+                .font(.caption)
+                .frame(width: 25)
+        }
+    }
 }
